@@ -45,52 +45,46 @@ const ConfigSlideSelector = ({
 
     return (
         <Card>
-            <Card.Header>
-                <div className="tw-flex tw-content-between">
-                    <span>
-                        {configTitle}
-                        <DirtyDot
-                            dirty={dirty}
-                            className="tw-absolute tw-ml-1 -tw-translate-y-2"
-                        />
-                    </span>
-                </div>
+            <Card.Header className="tw-flex tw-content-between">
+                <span className="tw-font-medium">
+                    {configTitle}
+                    <DirtyDot
+                        dirty={dirty}
+                        className="tw-absolute tw-ml-1 -tw-translate-y-1/2"
+                    />
+                </span>
             </Card.Header>
             <Card.Body>
-                <div>
-                    <div className="tw-flex tw-content-between">
-                        {configLabel && (
-                            <div className="tw-mb-4 tw-font-medium">
-                                {configLabel}
-                            </div>
-                        )}
-                        {configTooltip && (
-                            <Overlay
-                                tooltipId="tooltip"
-                                tooltipChildren={
-                                    <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
-                                        <p>{configTooltip}</p>
-                                    </div>
-                                }
-                            >
-                                <span className="mdi mdi-help-circle-outline" />
-                            </Overlay>
-                        )}
-                    </div>
-                    <StateSelector
-                        items={configAlternatives}
-                        selectedItem={selectedItem}
-                        onSelect={index => {
-                            const enable = index === 1;
-                            dispatch(
-                                setConfigValue({
-                                    configPin,
-                                    configPinState: xor(enable, invert),
-                                }),
-                            );
-                        }}
-                    />
+                <div className="tw-flex tw-content-between">
+                    {configLabel && (
+                        <div className="tw-mb-4">{configLabel}</div>
+                    )}
+                    {configTooltip && (
+                        <Overlay
+                            tooltipId="tooltip"
+                            tooltipChildren={
+                                <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
+                                    <p>{configTooltip}</p>
+                                </div>
+                            }
+                        >
+                            <span className="mdi mdi-help-circle-outline" />
+                        </Overlay>
+                    )}
                 </div>
+                <StateSelector
+                    items={configAlternatives}
+                    selectedItem={selectedItem}
+                    onSelect={index => {
+                        const enable = index === 1;
+                        dispatch(
+                            setConfigValue({
+                                configPin,
+                                configPinState: xor(enable, invert),
+                            }),
+                        );
+                    }}
+                />
             </Card.Body>
         </Card>
     );
