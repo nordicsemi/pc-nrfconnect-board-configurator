@@ -41,8 +41,8 @@ const ConfigSwitch = ({
     const dirty = useSelector(getConfigPinDirty(configPin));
 
     return (
-        <Card
-            title={
+        <Card>
+            <Card.Header>
                 <div>
                     <Toggle
                         isToggled={toggleEnable}
@@ -56,7 +56,9 @@ const ConfigSwitch = ({
                         }
                     >
                         <span>
-                            <span className="h5">{configTitle}</span>
+                            <span className="h5 tw-font-medium">
+                                {configTitle}
+                            </span>
                             <DirtyDot
                                 dirty={dirty}
                                 className="tw-absolute tw-ml-1 -tw-translate-x-1 -tw-translate-y-1/2"
@@ -64,25 +66,26 @@ const ConfigSwitch = ({
                         </span>
                     </Toggle>
                 </div>
-            }
-        >
-            {configTooltip ? (
-                <Overlay
-                    tooltipId="tooltip"
-                    tooltipChildren={
-                        <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
-                            <p className="tooltip-text">{configTooltip}</p>
+            </Card.Header>
+            <Card.Body>
+                {configTooltip ? (
+                    <Overlay
+                        tooltipId="tooltip"
+                        tooltipChildren={
+                            <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
+                                <p className="tooltip-text">{configTooltip}</p>
+                            </div>
+                        }
+                    >
+                        <div className="tw-flex tw-content-between">
+                            <div className="tw-flex-grow">{configLabel}</div>
+                            <span className="mdi mdi-help-circle-outline" />
                         </div>
-                    }
-                >
-                    <div className="tw-flex tw-content-between">
-                        <div className="tw-flex-grow">{configLabel}</div>
-                        <span className="mdi mdi-help-circle-outline" />
-                    </div>
-                </Overlay>
-            ) : (
-                <div className="tw-flex-grow">{configLabel}</div>
-            )}
+                    </Overlay>
+                ) : (
+                    <div className="tw-flex-grow">{configLabel}</div>
+                )}
+            </Card.Body>
         </Card>
     );
 };

@@ -54,8 +54,8 @@ const VCOMConfiguration = ({
     const hwfcEnableDirty = useSelector(getConfigPinDirty(hwfcEnablePin));
 
     return (
-        <Card
-            title={
+        <Card>
+            <Card.Header>
                 <div>
                     <Toggle
                         isToggled={vcomEnable}
@@ -91,7 +91,7 @@ const VCOMConfiguration = ({
                                 </div>
                             }
                         >
-                            <span className="h5">
+                            <span className="h5 tw-font-medium">
                                 Connect port {vcomName}{' '}
                                 <span className="mdi mdi-help-circle-outline" />
                                 <DirtyDot
@@ -102,48 +102,50 @@ const VCOMConfiguration = ({
                         </Overlay>
                     </Toggle>
                 </div>
-            }
-        >
-            <div>
-                <Toggle
-                    disabled={!vcomEnable}
-                    isToggled={hwfcEnable && vcomEnable}
-                    onToggle={enableHwfc => {
-                        dispatch(
-                            setConfigValue({
-                                configPin: hwfcEnablePin,
-                                configPinState: xor(enableHwfc, hwfcInvert),
-                            }),
-                        );
-                    }}
-                >
-                    <Overlay
-                        tooltipId={`tooltip_hwfc_${vcomName}`}
-                        tooltipChildren={
-                            <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
-                                <p className="tooltip-text">
-                                    Connect or disconnect the Hardware Flow
-                                    Control pins for the virtual COM port. When
-                                    disconnected, the HWFC GPIO pins for the
-                                    target chip can be used for other purposes.
-                                    When connected, an autodetect feature is
-                                    used to determine whether or not HWFC is
-                                    enabled on the target chip.
-                                </p>
-                            </div>
-                        }
+            </Card.Header>
+            <Card.Body>
+                <div>
+                    <Toggle
+                        disabled={!vcomEnable}
+                        isToggled={hwfcEnable && vcomEnable}
+                        onToggle={enableHwfc => {
+                            dispatch(
+                                setConfigValue({
+                                    configPin: hwfcEnablePin,
+                                    configPinState: xor(enableHwfc, hwfcInvert),
+                                }),
+                            );
+                        }}
                     >
-                        <span>
-                            {vcomName} HWFC autodetect lines
-                            <span className="mdi mdi-help-circle-outline tw-pl-1" />
-                            <DirtyDot
-                                dirty={hwfcEnableDirty}
-                                className="tw-absolute tw-ml-1 -tw-translate-y-2"
-                            />
-                        </span>
-                    </Overlay>
-                </Toggle>
-            </div>
+                        <Overlay
+                            tooltipId={`tooltip_hwfc_${vcomName}`}
+                            tooltipChildren={
+                                <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
+                                    <p className="tooltip-text">
+                                        Connect or disconnect the Hardware Flow
+                                        Control pins for the virtual COM port.
+                                        When disconnected, the HWFC GPIO pins
+                                        for the target chip can be used for
+                                        other purposes. When connected, an
+                                        autodetect feature is used to determine
+                                        whether or not HWFC is enabled on the
+                                        target chip.
+                                    </p>
+                                </div>
+                            }
+                        >
+                            <span>
+                                {vcomName} HWFC autodetect lines
+                                <span className="mdi mdi-help-circle-outline tw-pl-1" />
+                                <DirtyDot
+                                    dirty={hwfcEnableDirty}
+                                    className="tw-absolute tw-ml-1 -tw-translate-y-2"
+                                />
+                            </span>
+                        </Overlay>
+                    </Toggle>
+                </div>
+            </Card.Body>
         </Card>
     );
 };

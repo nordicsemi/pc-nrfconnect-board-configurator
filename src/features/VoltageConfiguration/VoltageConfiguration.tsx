@@ -69,70 +69,71 @@ const VoltageConfiguration = ({
         pmicPortWarning.condition === 'voltage-min';
 
     return (
-        <Card
-            title={
+        <Card>
+            <Card.Header>
                 <div className="tw-relative tw-flex tw-content-between">
-                    <span className="tw-pr-4 tw-text-left tw-leading-5">
+                    <span className="tw-pr-4 tw-text-left tw-font-medium tw-leading-5">
                         {label}
                         <span className="align-top tw-ml-1 tw-inline-flex tw-items-start">
                             <DirtyDot dirty={dirty} />
                         </span>
                     </span>
                 </div>
-            }
-        >
-            <div className="tw-flex tw-flex-col">
-                <NumberInput
-                    showSlider
-                    label={
-                        tooltip ? (
-                            <Overlay
-                                tooltipId="tooltip"
-                                tooltipChildren={
-                                    <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
-                                        <p>{tooltip}</p>
-                                    </div>
-                                }
-                            >
-                                <span>
-                                    {description}{' '}
-                                    <span className="mdi mdi-help-circle-outline" />
-                                </span>
-                            </Overlay>
-                        ) : (
-                            description
-                        )
-                    }
-                    unit="mV"
-                    range={{ min: voltageMin, max: voltageMax, step: 100 }}
-                    value={voltage}
-                    onChange={value => {
-                        pmicPort.forEach(p => {
-                            dispatch(
-                                setPmicConfigValue({
-                                    pmicConfigPort: p,
-                                    configPinState: value,
-                                }),
-                            );
-                        });
-                    }}
-                />
-            </div>
-            {showWarning && (
-                <div className="tw-mb-2 tw-mt-4">
-                    <NoticeBox
-                        mdiIcon="mdi-lightbulb-alert-outline"
-                        color="tw-text-red"
-                        title={pmicPortWarning?.message}
-                        content={null}
+            </Card.Header>
+            <Card.Body>
+                <div className="tw-flex tw-flex-col">
+                    <NumberInput
+                        showSlider
+                        label={
+                            tooltip ? (
+                                <Overlay
+                                    tooltipId="tooltip"
+                                    tooltipChildren={
+                                        <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
+                                            <p>{tooltip}</p>
+                                        </div>
+                                    }
+                                >
+                                    <span>
+                                        {description}{' '}
+                                        <span className="mdi mdi-help-circle-outline" />
+                                    </span>
+                                </Overlay>
+                            ) : (
+                                description
+                            )
+                        }
+                        unit="mV"
+                        range={{ min: voltageMin, max: voltageMax, step: 100 }}
+                        value={voltage}
+                        onChange={value => {
+                            pmicPort.forEach(p => {
+                                dispatch(
+                                    setPmicConfigValue({
+                                        pmicConfigPort: p,
+                                        configPinState: value,
+                                    }),
+                                );
+                            });
+                        }}
                     />
                 </div>
-            )}
-            <VoltagePresetButtons
-                voltages={voltagePresetValues}
-                pmicPorts={pmicPort}
-                setVoltage={voltage}
-            />
+                {showWarning && (
+                    <div className="tw-mb-2 tw-mt-4">
+                        <NoticeBox
+                            mdiIcon="mdi-lightbulb-alert-outline"
+                            color="tw-text-red"
+                            title={pmicPortWarning?.message}
+                            content={null}
+                        />
+                    </div>
+                )}
+                <VoltagePresetButtons
+                    voltages={voltagePresetValues}
+                    pmicPorts={pmicPort}
+                    setVoltage={voltage}
+                />
+            </Card.Body>
         </Card>
     );
 };

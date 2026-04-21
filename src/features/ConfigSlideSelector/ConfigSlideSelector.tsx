@@ -44,8 +44,8 @@ const ConfigSlideSelector = ({
     const dirty = useSelector(getConfigPinDirty(configPin));
 
     return (
-        <Card
-            title={
+        <Card>
+            <Card.Header>
                 <div className="tw-flex tw-content-between">
                     <span>
                         {configTitle}
@@ -55,40 +55,43 @@ const ConfigSlideSelector = ({
                         />
                     </span>
                 </div>
-            }
-        >
-            <div>
-                <div className="tw-flex tw-content-between">
-                    {configLabel && (
-                        <div className="tw-mb-4">{configLabel}</div>
-                    )}
-                    {configTooltip && (
-                        <Overlay
-                            tooltipId="tooltip"
-                            tooltipChildren={
-                                <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
-                                    <p>{configTooltip}</p>
-                                </div>
-                            }
-                        >
-                            <span className="mdi mdi-help-circle-outline" />
-                        </Overlay>
-                    )}
+            </Card.Header>
+            <Card.Body>
+                <div>
+                    <div className="tw-flex tw-content-between">
+                        {configLabel && (
+                            <div className="tw-mb-4 tw-font-medium">
+                                {configLabel}
+                            </div>
+                        )}
+                        {configTooltip && (
+                            <Overlay
+                                tooltipId="tooltip"
+                                tooltipChildren={
+                                    <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
+                                        <p>{configTooltip}</p>
+                                    </div>
+                                }
+                            >
+                                <span className="mdi mdi-help-circle-outline" />
+                            </Overlay>
+                        )}
+                    </div>
+                    <StateSelector
+                        items={configAlternatives}
+                        selectedItem={selectedItem}
+                        onSelect={index => {
+                            const enable = index === 1;
+                            dispatch(
+                                setConfigValue({
+                                    configPin,
+                                    configPinState: xor(enable, invert),
+                                }),
+                            );
+                        }}
+                    />
                 </div>
-                <StateSelector
-                    items={configAlternatives}
-                    selectedItem={selectedItem}
-                    onSelect={index => {
-                        const enable = index === 1;
-                        dispatch(
-                            setConfigValue({
-                                configPin,
-                                configPinState: xor(enable, invert),
-                            }),
-                        );
-                    }}
-                />
-            </div>
+            </Card.Body>
         </Card>
     );
 };
