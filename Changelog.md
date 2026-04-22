@@ -1,3 +1,9 @@
+## 1.2.0 - 2026-04-23
+
+### Added
+
+- Support for the nRF54LS05 DK.
+
 ## 1.1.5 - 2026-03-25
 
 ### Fixed
