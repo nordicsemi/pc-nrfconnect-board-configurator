@@ -62,7 +62,7 @@
     "defaults": {
         "pins": [
             {
-                "pin": 42,
+                "pin": 6,
                 "state": true
             },
             {
@@ -78,16 +78,12 @@
                 "state": true
             },
             {
+                "pin": 42,
+                "state": true
+            },
+            {
                 "pin": 45,
                 "state": true
-            },
-            {
-                "pin": 6,
-                "state": true
-            },
-            {
-                "pin": 9,
-                "state": false
             }
         ],
         "pmicPorts": [
