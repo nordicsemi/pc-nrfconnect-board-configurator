@@ -1,3 +1,9 @@
+## 1.3.0 - unreleased
+
+### Added
+
+- Support for the nRF54LC10 DK.
+
 ## 1.2.0 - 2026-04-23
 
 ### Added
