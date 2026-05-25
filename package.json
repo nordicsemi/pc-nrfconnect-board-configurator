@@ -19,10 +19,10 @@
         ],
         "nrfutil": {
             "device": [
-                "2.17.5"
+                "2.18.0"
             ]
         },
-        "nrfutilCore": "8.1.1",
+        "nrfutilCore": "8.2.0",
         "html": "dist/index.html"
     },
     "main": "dist/bundle.js",
@@ -48,7 +48,7 @@
         "prepare": "husky install"
     },
     "devDependencies": {
-        "@nordicsemiconductor/pc-nrfconnect-shared": "^246.0.0",
+        "@nordicsemiconductor/pc-nrfconnect-shared": "^247.0.0",
         "@types/react-test-renderer": "18.0.0"
     },
     "prettier": "@nordicsemiconductor/pc-nrfconnect-shared/config/prettier.config.js"
