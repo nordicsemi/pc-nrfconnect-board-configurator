@@ -19,10 +19,10 @@
         ],
         "nrfutil": {
             "device": [
-                "2.18.2"
+                "2.19.0"
             ]
         },
-        "nrfutilCore": "8.2.0",
+        "nrfutilCore": "8.1.1",
         "html": "dist/index.html"
     },
     "main": "dist/bundle.js",
