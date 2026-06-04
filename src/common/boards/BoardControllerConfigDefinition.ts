@@ -17,6 +17,14 @@ type VcomConfigPinDefinition = {
     hwfc: PinDefinition;
 };
 
+type DtrConfigPinDefinition = {
+    type: 'dtr';
+    id: string;
+    name: string;
+    enable: PinDefinition;
+    dependantPin: PinDefinition;
+};
+
 type SwitchConfigDefinition = {
     type: 'switch';
     id: string;
@@ -66,6 +74,7 @@ type PmicConfigPort = { port: number; voltage: number };
 type PinType =
     | SwitchConfigDefinition
     | SlideConfigDefinition
+    | DtrConfigPinDefinition
     | VcomConfigPinDefinition;
 
 type BoardControllerConfigDefinition = {

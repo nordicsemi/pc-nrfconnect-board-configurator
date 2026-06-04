@@ -32,15 +32,14 @@
             }
         },
         {
-            "type": "vcom",
+            "type": "dtr",
             "id": "twi-dtr",
             "name": "Data Terminal Ready",
             "enable": {
-                "pin": 17,
-                "invert": true
+                "pin": 9
             },
-            "hwfc": {
-                "pin": 9,
+            "dependantPin": {
+                "pin": 17,
                 "invert": true
             }
         },

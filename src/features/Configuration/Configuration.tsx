@@ -18,6 +18,7 @@ import type BoardControllerConfigDefinition from '../../common/boards/BoardContr
 import ConfigSlideSelector from '../ConfigSlideSelector/ConfigSlideSelector';
 import ConfigSwitch from '../ConfigSwitch/ConfigSwitch';
 import { getBoardRevisionSemver } from '../Device/deviceSlice';
+import DTRConfiguration from '../VCOMConfiguration/DTRConfiguration';
 import VCOMConfiguration from '../VCOMConfiguration/VCOMConfiguration';
 import VoltageConfiguration from '../VoltageConfiguration/VoltageConfiguration';
 import {
@@ -130,6 +131,21 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                                         pinConfig.enable.invert ?? false
                                     }
                                     hwfcInvert={pinConfig.hwfc.invert ?? false}
+                                />
+                            );
+                        case 'dtr':
+                            return (
+                                <DTRConfiguration
+                                    key={pinConfig.id}
+                                    portName={pinConfig.name}
+                                    dtrEnablePin={pinConfig.enable.pin}
+                                    enablerPin={pinConfig.dependantPin.pin}
+                                    enableInvert={
+                                        pinConfig.enable.invert ?? false
+                                    }
+                                    dependantPinInvert={
+                                        pinConfig.dependantPin.invert ?? false
+                                    }
                                 />
                             );
                         case 'slide':

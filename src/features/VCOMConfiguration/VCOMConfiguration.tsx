@@ -5,20 +5,8 @@
  */
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-    Card,
-    logger,
-    Overlay,
-    Toggle,
-} from '@nordicsemiconductor/pc-nrfconnect-shared';
 
-import DirtyDot from '../../app/DirtyDot';
-import {
-    getConfigPinDirty,
-    getConfigValue,
-    setConfigValue,
-} from '../Configuration/boardControllerConfigSlice';
+import PinConfigPanel from './PinConfigPanel';
 
 import './vcomconfig.scss';
 
@@ -37,119 +25,31 @@ const VCOMConfiguration = ({
     enableInvert,
     hwfcInvert,
 }: VCOMConfigurationProps) => {
-    logger.debug(`Rendering VCOMConfiguration for ${vcomName}`);
-
-    const dispatch = useDispatch();
-
-    const vcomEnable = xor(
-        useSelector(getConfigValue(vcomEnablePin)),
-        enableInvert,
-    );
-    const hwfcEnable = xor(
-        useSelector(getConfigValue(hwfcEnablePin)),
-        hwfcInvert,
-    );
-
-    const vcomEnableDirty = useSelector(getConfigPinDirty(vcomEnablePin));
-    const hwfcEnableDirty = useSelector(getConfigPinDirty(hwfcEnablePin));
-
     return (
-        <Card>
-            <Card.Header>
-                <div>
-                    <Toggle
-                        isToggled={vcomEnable}
-                        onToggle={enableVcom => {
-                            dispatch(
-                                setConfigValue({
-                                    configPin: vcomEnablePin,
-                                    configPinState: xor(
-                                        enableVcom,
-                                        enableInvert,
-                                    ),
-                                }),
-                            );
-                            // Also disconnect HWFC if VCOM is disconnected
-                            dispatch(
-                                setConfigValue({
-                                    configPin: hwfcEnablePin,
-                                    configPinState: xor(enableVcom, hwfcInvert),
-                                }),
-                            );
-                        }}
-                    >
-                        <Overlay
-                            tooltipId={`tooltip_${vcomName}`}
-                            tooltipChildren={
-                                <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
-                                    <p className="tooltip-text">
-                                        Connect or disconnect the pins used for
-                                        the virtual COM port. When disconnected,
-                                        the corresponding UART GPIO pins can be
-                                        used for other purposes.
-                                    </p>
-                                </div>
-                            }
-                        >
-                            <span className="h5 tw-font-medium">
-                                Connect port {vcomName}{' '}
-                                <span className="mdi mdi-help-circle-outline" />
-                                <DirtyDot
-                                    dirty={vcomEnableDirty}
-                                    className="tw-absolute tw-ml-1 -tw-translate-y-2"
-                                />
-                            </span>
-                        </Overlay>
-                    </Toggle>
-                </div>
-            </Card.Header>
-            <Card.Body>
-                <div>
-                    <Toggle
-                        disabled={!vcomEnable}
-                        isToggled={hwfcEnable && vcomEnable}
-                        onToggle={enableHwfc => {
-                            dispatch(
-                                setConfigValue({
-                                    configPin: hwfcEnablePin,
-                                    configPinState: xor(enableHwfc, hwfcInvert),
-                                }),
-                            );
-                        }}
-                    >
-                        <Overlay
-                            tooltipId={`tooltip_hwfc_${vcomName}`}
-                            tooltipChildren={
-                                <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
-                                    <p className="tooltip-text">
-                                        Connect or disconnect the Hardware Flow
-                                        Control pins for the virtual COM port.
-                                        When disconnected, the HWFC GPIO pins
-                                        for the target chip can be used for
-                                        other purposes. When connected, an
-                                        autodetect feature is used to determine
-                                        whether or not HWFC is enabled on the
-                                        target chip.
-                                    </p>
-                                </div>
-                            }
-                        >
-                            <span>
-                                {vcomName} HWFC autodetect lines
-                                <span className="mdi mdi-help-circle-outline tw-pl-1" />
-                                <DirtyDot
-                                    dirty={hwfcEnableDirty}
-                                    className="tw-absolute tw-ml-1 -tw-translate-y-2"
-                                />
-                            </span>
-                        </Overlay>
-                    </Toggle>
-                </div>
-            </Card.Body>
-        </Card>
+        <PinConfigPanel
+            portName={vcomName}
+            panelTitle={`Connect port ${vcomName}`}
+            titleTooltip={`Connect or disconnect the pins used for
+                             the virtual COM port. When disconnected,
+                             the corresponding UART GPIO pins can be
+                             used for other purposes.
+            `}
+            dependentPinTitle={`${vcomName} HWFC autodetect lines`}
+            dependentPinTooltip={`Connect or disconnect the Hardware Flow
+                                    Control pins for the virtual COM port.
+                                    When disconnected, the HWFC GPIO pins
+                                    for the target chip can be used for
+                                    other purposes. When connected, an
+                                    autodetect feature is used to determine
+                                    whether or not HWFC is enabled on the
+                                    target chip.
+            `}
+            mainPinEnable={vcomEnablePin}
+            dependantPinEnable={hwfcEnablePin}
+            mainPinEnableInvert={enableInvert}
+            dependantPinEnableInvert={hwfcInvert}
+        />
     );
 };
-
-const xor = (a: boolean, b: boolean): boolean => a !== b; // No XOR for booleans in TypeScript
 
 export default VCOMConfiguration;
