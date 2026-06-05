@@ -216,6 +216,16 @@ export function generatePinMap(
                     inverted: pin.hwfc.invert === true,
                 });
                 break;
+            case 'dtr':
+                pinMap.set(pin.enable.pin, {
+                    id: pin.id,
+                    inverted: pin.enable.invert === true,
+                });
+                pinMap.set(pin.dependantPin.pin, {
+                    id: `${pin.dependantPin.id}`,
+                    inverted: pin.dependantPin.invert === true,
+                });
+                break;
         }
     });
 

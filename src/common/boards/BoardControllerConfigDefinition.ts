@@ -9,6 +9,10 @@ type PinDefinition = {
     invert?: boolean;
 };
 
+interface DependantPinDefinition extends PinDefinition {
+    id: string;
+}
+
 type VcomConfigPinDefinition = {
     type: 'vcom';
     id: string;
@@ -22,7 +26,7 @@ type DtrConfigPinDefinition = {
     id: string;
     name: string;
     enable: PinDefinition;
-    dependantPin: PinDefinition;
+    dependantPin: DependantPinDefinition;
 };
 
 type SwitchConfigDefinition = {
