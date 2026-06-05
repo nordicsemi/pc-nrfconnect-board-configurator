@@ -24,18 +24,17 @@ const VCOMConfiguration = ({
     hwfcEnablePin,
     enableInvert,
     hwfcInvert,
-}: VCOMConfigurationProps) => {
-    return (
-        <PinConfigPanel
-            portName={vcomName}
-            panelTitle={`Connect port ${vcomName}`}
-            titleTooltip={`Connect or disconnect the pins used for
+}: VCOMConfigurationProps) => (
+    <PinConfigPanel
+        portName={vcomName}
+        panelTitle={`Connect port ${vcomName}`}
+        titleTooltip={`Connect or disconnect the pins used for
                              the virtual COM port. When disconnected,
                              the corresponding UART GPIO pins can be
                              used for other purposes.
             `}
-            dependentPinTitle={`${vcomName} HWFC autodetect lines`}
-            dependentPinTooltip={`Connect or disconnect the Hardware Flow
+        dependentPinTitle={`${vcomName} HWFC autodetect lines`}
+        dependentPinTooltip={`Connect or disconnect the Hardware Flow
                                     Control pins for the virtual COM port.
                                     When disconnected, the HWFC GPIO pins
                                     for the target chip can be used for
@@ -44,12 +43,11 @@ const VCOMConfiguration = ({
                                     whether or not HWFC is enabled on the
                                     target chip.
             `}
-            mainPinEnable={vcomEnablePin}
-            dependantPinEnable={hwfcEnablePin}
-            mainPinEnableInvert={enableInvert}
-            dependantPinEnableInvert={hwfcInvert}
-        />
-    );
-};
+        mainPinEnable={vcomEnablePin}
+        dependantPinEnable={hwfcEnablePin}
+        mainPinEnableInvert={enableInvert}
+        dependantPinEnableInvert={hwfcInvert}
+    />
+);
 
 export default VCOMConfiguration;
