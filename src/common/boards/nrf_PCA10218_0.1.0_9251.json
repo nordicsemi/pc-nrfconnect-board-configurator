@@ -28,14 +28,14 @@
             }
         },
         {
-          "type": "switch",
-          "id": "pw-monitor-led-control",
-          "title": "Power monitor LED",
-          "label": "Disable to set power monitor LED to off.",
-          "tooltip": "When enabled, device will blink if power monitor comparator or nPM1300 ADC readings are low.",
-          "enable": {
-            "pin": 5
-          }
+            "type": "switch",
+            "id": "pw-monitor-led-control",
+            "title": "Power monitor LED",
+            "label": "Disable to set power monitor LED to off.",
+            "tooltip": "When enabled, device will blink if power monitor comparator or nPM1300 ADC readings are low.",
+            "enable": {
+                "pin": 5
+            }
         },
         {
             "type": "switch",
