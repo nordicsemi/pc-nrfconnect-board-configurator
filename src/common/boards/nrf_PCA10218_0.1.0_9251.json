@@ -30,7 +30,7 @@
         {
             "type": "switch",
             "id": "pw-monitor-led-control",
-            "title": "Power monitor LED",
+            "title": "Power to power monitor LED",
             "label": "Disable to set the power monitor LED to off.",
             "tooltip": "When enabled, LED will blink if the power monitor comparator or nPM1300 ADC readings are low.",
             "enable": {
