@@ -1,0 +1,109 @@
+{
+    "board": {
+        "boardVersion": "PCA10218",
+        "boardRevision": "0.1.0",
+        "boardName": "nRF9251 DK"
+    },
+    "pins": [
+        {
+            "type": "vcom",
+            "id": "vcom0",
+            "name": "VCOM0",
+            "enable": {
+                "pin": 42
+            },
+            "hwfc": {
+                "pin": 20
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom1",
+            "name": "VCOM1",
+            "enable": {
+                "pin": 22
+            },
+            "hwfc": {
+                "pin": 23
+            }
+        },
+        {
+            "type": "switch",
+            "id": "pw-monitor-led-control",
+            "title": "Power to power monitor LED",
+            "label": "Disable to set the power monitor LED to off.",
+            "tooltip": "When enabled, LED will blink if the power monitor comparator or nPM1300 ADC readings are low.",
+            "enable": {
+                "pin": 5
+            }
+        },
+        {
+            "type": "switch",
+            "id": "swd-control",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
+            "enable": {
+                "pin": 6
+            }
+        },
+        {
+            "type": "switch",
+            "id": "ledcontrol",
+            "title": "Power to LEDs",
+            "label": "Disable to have LEDs unpowered (and kept off).",
+            "tooltip": "Enabling this option powers the LEDs.",
+            "enable": {
+                "pin": 45
+            }
+        },
+        {
+            "type": "switch",
+            "id": "qspi-control",
+            "title": "External memory",
+            "label": "Enable external flash",
+            "tooltip": "When enabled, the QSPI pins (P5.00-P5.05) are connected to the external memory. When disabled, the QSPI pins are routed to the PORT5 header (P5).",
+            "enable": {
+                "pin": 47
+            }
+        }
+    ],
+    "pmicPorts": [],
+    "defaults": {
+        "pins": [
+            {
+                "pin": 5,
+                "state": false
+            },
+            {
+                "pin": 6,
+                "state": true
+            },
+            {
+                "pin": 20,
+                "state": true
+            },
+            {
+                "pin": 22,
+                "state": true
+            },
+            {
+                "pin": 23,
+                "state": true
+            },
+            {
+                "pin": 42,
+                "state": true
+            },
+            {
+                "pin": 45,
+                "state": true
+            },
+            {
+                "pin": 47,
+                "state": true
+            }
+        ],
+        "pmicPorts": []
+    }
+}

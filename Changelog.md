@@ -4,6 +4,12 @@
 
 - Support for the nRF54LC10 DK.
 
+## 1.2.1 - 2026-06-16
+
+### Changed
+
+- Maintenance release to update the dependencies.
+
 ## 1.2.0 - 2026-04-23
 
 ### Added
