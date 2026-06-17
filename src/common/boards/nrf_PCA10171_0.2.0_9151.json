@@ -34,7 +34,7 @@
         {
             "type": "dtr",
             "id": "tgt-twi-ctrl",
-            "name": "Data Terminal Ready",
+            "name": "Data Terminal Ready (DTR)",
             "enable": {
                 "pin": 9
             },
