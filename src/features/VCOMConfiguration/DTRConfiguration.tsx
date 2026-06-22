@@ -26,7 +26,6 @@ const DTRConfiguration = ({
     dependantPinInvert,
 }: TWIConfigurationProps) => (
     <PinConfigPanel
-        // TODO: top pin must be 17, and dependent pin is pin 9
         portName={portName}
         panelTitle={portName}
         titleTooltip="Connect or disconnect control signals for the UART power management for the nRF9151 SiP when it is running the nRF91M1 module firmware. When enabled, UART is powered on and active (the DTR line is pulled low and DTR is asserted.) When disabled, UART is powered off and inactive (the DTR line is pulled high and DTR is deasserted.)"
@@ -36,6 +35,7 @@ const DTRConfiguration = ({
         dependantPinEnable={enablerPin}
         mainPinEnableInvert={enableInvert}
         dependantPinEnableInvert={dependantPinInvert}
+        dependantRequiredWhenMainOn
     />
 );
 

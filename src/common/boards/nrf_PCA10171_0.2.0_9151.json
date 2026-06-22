@@ -33,15 +33,15 @@
         },
         {
             "type": "dtr",
-            "id": "tgt-twi-ctrl",
+            "id": "slm-dtr",
             "name": "Data Terminal Ready (DTR)",
             "enable": {
-                "pin": 9
-            },
-            "dependantPin": {
-                "id": "slm-dtr",
                 "pin": 17,
                 "invert": true
+            },
+            "dependantPin": {
+                "id": "tgt-twi-ctrl",
+                "pin": 9
             }
         },
         {

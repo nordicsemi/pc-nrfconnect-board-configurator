@@ -55,6 +55,13 @@ interface PinConfigPanelProps {
     dependantPinEnable: number;
     mainPinEnableInvert: boolean;
     dependantPinEnableInvert: boolean;
+
+    // When false (default, VCOM), the dependent pin cascades with the main toggle: it is
+    // forced off (and its toggle disabled) while main is off, and editable while main is
+    // on. When true (DTR), the relationship is inverted: the dependent (enabler) pin is
+    // forced on (and its toggle disabled) while the main toggle is on, and is freely
+    // editable while main is off — i.e. enabling the main pin requires the enabler on.
+    dependantRequiredWhenMainOn?: boolean;
 }
 
 const PinConfigPanel = ({
@@ -67,16 +74,17 @@ const PinConfigPanel = ({
     dependantPinEnable,
     mainPinEnableInvert,
     dependantPinEnableInvert,
+    dependantRequiredWhenMainOn = false,
 }: PinConfigPanelProps) => {
     logger.debug(`Rendering PinConfigPanel for ${portName}`);
 
     const dispatch = useDispatch();
 
-    const vcomEnable = xor(
+    const mainEnabled = xor(
         useSelector(getConfigValue(mainPinEnable)),
         mainPinEnableInvert,
     );
-    const hwfcEnable = xor(
+    const dependantEnabled = xor(
         useSelector(getConfigValue(dependantPinEnable)),
         dependantPinEnableInvert,
     );
@@ -91,27 +99,46 @@ const PinConfigPanel = ({
             <Card.Header>
                 <div>
                     <Toggle
-                        isToggled={vcomEnable}
-                        onToggle={enableVcom => {
+                        isToggled={mainEnabled}
+                        onToggle={enableMain => {
                             dispatch(
                                 setConfigValue({
                                     configPin: mainPinEnable,
                                     configPinState: xor(
-                                        enableVcom,
+                                        enableMain,
                                         mainPinEnableInvert,
                                     ),
                                 }),
                             );
-                            // Also disconnect HWFC if VCOM is disconnected
-                            dispatch(
-                                setConfigValue({
-                                    configPin: dependantPinEnable,
-                                    configPinState: xor(
-                                        enableVcom,
-                                        dependantPinEnableInvert,
-                                    ),
-                                }),
-                            );
+
+                            if (dependantRequiredWhenMainOn) {
+                                // DTR: enabling the main pin requires the dependent
+                                // enabler pin to be on as well. When main is turned off,
+                                // the dependent is left free (can remain on).
+                                if (enableMain) {
+                                    dispatch(
+                                        setConfigValue({
+                                            configPin: dependantPinEnable,
+                                            configPinState: xor(
+                                                true,
+                                                dependantPinEnableInvert,
+                                            ),
+                                        }),
+                                    );
+                                }
+                            } else {
+                                // VCOM: the dependent (HWFC) pin cascades with the main
+                                // toggle — also disconnect it when main is disconnected.
+                                dispatch(
+                                    setConfigValue({
+                                        configPin: dependantPinEnable,
+                                        configPinState: xor(
+                                            enableMain,
+                                            dependantPinEnableInvert,
+                                        ),
+                                    }),
+                                );
+                            }
                         }}
                     >
                         <Overlay
@@ -139,14 +166,22 @@ const PinConfigPanel = ({
             <Card.Body>
                 <div>
                     <Toggle
-                        disabled={!vcomEnable}
-                        isToggled={hwfcEnable && vcomEnable}
-                        onToggle={enableHwfc => {
+                        disabled={
+                            dependantRequiredWhenMainOn
+                                ? mainEnabled
+                                : !mainEnabled
+                        }
+                        isToggled={
+                            dependantRequiredWhenMainOn
+                                ? mainEnabled || dependantEnabled
+                                : dependantEnabled && mainEnabled
+                        }
+                        onToggle={enableDependant => {
                             dispatch(
                                 setConfigValue({
                                     configPin: dependantPinEnable,
                                     configPinState: xor(
-                                        enableHwfc,
+                                        enableDependant,
                                         dependantPinEnableInvert,
                                     ),
                                 }),
