@@ -2,6 +2,9 @@ tool:
 - name: Board Configurator app
   link: true
 sections:
+- name: June 2026
+  entries:
+  - "Added the nRF54LC10 DK and the nRF54LS05 DK to the list of [supported devices](index.md#supported-devices)."
 - name: January 2026
   entries:
   - "Renamed the Home page to [Get started](./index.md)."

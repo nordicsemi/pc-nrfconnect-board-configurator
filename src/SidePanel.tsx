@@ -183,6 +183,16 @@ export default () => {
                                 nRF54LS05 DK
                             </a>
                         </li>
+                        {/* <li> */}
+                        {/*    <a */}
+                        {/*        href="https://www.nordicsemi.com/Products/Development-hardware/nRF54LC10-DK" */}
+                        {/*        target="_blank" */}
+                        {/*        rel="noreferrer" */}
+                        {/*    > */}
+                        {/*        nRF54LC10 DK */}
+                        {/*    </a> */}
+                        {/* </li> */}
+                        <li>nRF54LC10 DK</li>
                         <li>nRF54H20 DK</li>
                     </ul>
                 </Group>

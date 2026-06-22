@@ -15,6 +15,8 @@ For installation instructions, see [Installing nRF Connect for Desktop apps](htt
 - nRF54H20 DK
 - nRF54LM20 DK
 - nRF54L15 DK
+- nRF54LC10 DK
+- nRF54LS05 DK
 - nRF54LV10 DK
 
 ## Application source code

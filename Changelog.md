@@ -1,8 +1,14 @@
-## 1.3.0 - Unreleased
+## 1.4.0 - Unreleased
 
 ### Added
 
 - Data Terminal Ready control for the nRF9151 DK.
+
+## 1.3.0 - 2026-06-18
+
+### Added
+
+- Support for the nRF54LC10 DK.
 
 ## 1.2.1 - 2026-06-16
 
