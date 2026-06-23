@@ -137,15 +137,7 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                             return (
                                 <DTRConfiguration
                                     key={pinConfig.id}
-                                    portName={pinConfig.name}
-                                    dtrEnablePin={pinConfig.enable.pin}
-                                    enablerPin={pinConfig.dependantPin.pin}
-                                    enableInvert={
-                                        pinConfig.enable.invert ?? false
-                                    }
-                                    dependantPinInvert={
-                                        pinConfig.dependantPin.invert ?? false
-                                    }
+                                    pinConfig={pinConfig}
                                 />
                             );
                         case 'slide':

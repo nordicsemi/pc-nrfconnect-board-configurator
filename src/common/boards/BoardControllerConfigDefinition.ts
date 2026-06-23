@@ -21,7 +21,7 @@ type VcomConfigPinDefinition = {
     hwfc: PinDefinition;
 };
 
-type DtrConfigPinDefinition = {
+export type DtrConfigPinDefinition = {
     type: 'dtr';
     id: string;
     name: string;
