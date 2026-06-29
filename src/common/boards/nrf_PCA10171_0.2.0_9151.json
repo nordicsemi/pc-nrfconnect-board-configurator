@@ -33,7 +33,7 @@
         },
         {
             "type": "dtr",
-            "id": "slm-dtr",
+            "id": "sm-dtr",
             "name": "Data Terminal Ready (DTR)",
             "enable": {
                 "pin": 17,

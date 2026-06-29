@@ -235,7 +235,7 @@ export function generatePinMap(
                     inverted: pin.enable.invert === true,
                 });
                 pinMap.set(pin.dependantPin.pin, {
-                    id: `${pin.dependantPin.id}`,
+                    id: pin.dependantPin.id,
                     inverted: pin.dependantPin.invert === true,
                 });
                 break;

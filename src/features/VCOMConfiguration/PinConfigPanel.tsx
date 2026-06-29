@@ -119,10 +119,8 @@ const PinConfigPanel = ({
                                     dispatch(
                                         setConfigValue({
                                             configPin: dependantPinEnable,
-                                            configPinState: xor(
-                                                true,
-                                                dependantPinEnableInvert,
-                                            ),
+                                            configPinState:
+                                                !dependantPinEnableInvert,
                                         }),
                                     );
                                 }
@@ -174,7 +172,7 @@ const PinConfigPanel = ({
                         isToggled={
                             dependantRequiredWhenMainOn
                                 ? mainEnabled || dependantEnabled
-                                : dependantEnabled && mainEnabled
+                                : mainEnabled && dependantEnabled
                         }
                         onToggle={enableDependant => {
                             dispatch(
