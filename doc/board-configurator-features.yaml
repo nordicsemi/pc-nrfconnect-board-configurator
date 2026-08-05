@@ -129,7 +129,7 @@ supported_devices:
 
   - device: nRF54L15 DK
     pca: PCA10156
-    verification_version:
+    verification_version: 1.2.0
     support:
       configure_swo_control: full
       configure_level_shifter_enable_ls_en: unsupported
@@ -194,7 +194,7 @@ supported_devices:
 
   - device: nRF9151 DK
     pca: PCA10171
-    verification_version:
+    verification_version: 1.2.0
     support:
       configure_swo_control: unsupported
       configure_level_shifter_enable_ls_en: unsupported
