@@ -1,0 +1,312 @@
+app:
+  id: board-configurator
+  name: Board Configurator
+  repo: pc-nrfconnect-board-configurator
+
+statuses: [full, unsupported, not_applicable]
+
+general_app_features:
+  - id: select_device
+    name: Select device
+    description: "Select a connected development kit from a drop-down list to connect to it"
+  - id: detect_unsupported_device
+    name: Detect unsupported device
+    description: Identify whether a selected device is supported and indicate when it is not
+  - id: read_board_controller_configuration
+    name: Read board controller configuration
+    description: Read the Interface MCU configuration from a connected board
+  - id: write_config
+    name: Write config
+    description: Write the selected configuration to the development kit, overwriting the defaults
+  - id: load_default_config
+    name: Load default config
+    description: "Load a device's default configuration settings into the application UI without writing to the device"
+  - id: display_unwritten_changes_indicator
+    name: Display unwritten changes indicator
+    description: Highlight modified/unwritten configuration options with a blue dot
+  - id: display_dk_hardware_revision
+    name: Display DK Hardware Revision
+    description: Show the hardware revision/version of the selected device
+  - id: display_board_controller_fw_version
+    name: Display Board Controller FW version
+    description: Show the version of the Interface MCU firmware
+  - id: show_config_json
+    name: Show Config JSON
+    description: Display the configuration JSON array sent to the board controller for review
+  - id: copy_config_json
+    name: Copy Config JSON
+    description: Copy the configuration JSON array sent to the board controlle
+  - id: configure_vcom0_interface
+    name: Configure VCOM0 interface
+    description: Enable the VCOM0 RXD/TXD interface to the target SoC
+  - id: configure_vcom1_interface
+    name: Configure VCOM1 interface
+    description: Enable the VCOM1 RXD/TXD interface to the target SoC
+  - id: configure_vcom0_hardware_flow_control
+    name: Configure VCOM0 hardware flow control
+    description: Enable the VCOM0 RTS/CTS flow control signals
+  - id: configure_vcom1_hardware_flow_control
+    name: Configure VCOM1 hardware flow control
+    description: Enable the VCOM1 RTS/CTS flow control signals
+  - id: configure_software_debugger_swd_control
+    name: Configure Software Debugger (SWD) control
+    description: Enable the SWD signal connection to the target SoC
+  - id: configure_led_power_control
+    name: Configure LED power control
+    description: "Enable power to the target SoC's LEDs (via PMIC load switch)"
+  - id: restart_application
+    name: Restart application
+    description: Restart the app via a keyboard shortcut (Ctrl+R / Command+R)
+
+device_specific_features:
+  - id: configure_swo_control
+    name: Configure SWO control
+    description: Enable the SWO signal connection to the target SoC
+  - id: configure_level_shifter_enable_ls_en
+    name: "Configure level-shifter enable (LS_EN)"
+    description: Enable voltage level shifters between board controller and SoC
+  - id: configure_slm_dtr_signal
+    name: Configure SLM DTR signal
+    description: Enable the DTR signal (alternative to TGT_SCL) for the Serial Modem Application
+  - id: configure_external_memory_qspi_routing
+    name: Configure external memory / QSPI routing
+    description: Enable external flash or route QSPI pins between external memory and pin header
+  - id: configure_sim_select
+    name: Configure SIM select
+    description: Select between SIM card socket and eSIM
+  - id: configure_coex_select
+    name: Configure COEX select
+    description: Route COEX or GPIO to Arduino connectors
+  - id: configure_i_o_expander_control
+    name: Configure I/O expander control
+    description: Enable LEDs and buttons through the I/O expander
+  - id: configure_reset_in_out_control
+    name: Configure reset in/out control
+    description: Connect the SoC reset to the Arduino AREF/RESET pins
+
+shared_features:
+  - id: restore_defaults
+    name: Restore defaults
+    description: "Restore all app's settings to default"
+  - id: give_feedback
+    name: Give Feedback
+    description: Send a feedback message
+  - id: open_documentation
+    name: Open Documentation
+    description: Open external documentation page
+  - id: verbose_logging
+    name: Verbose Logging
+    description: Turn on verbose logging and restart the app
+  - id: create_system_report
+    name: Create system report
+    description: Generate a txt document with detailed report
+  - id: show_log
+    name: Show Log
+    description: Toggle log window
+  - id: autoscroll_log
+    name: Autoscroll log
+    description: Toggle log window autoscroll
+  - id: open_log_file
+    name: Open log file
+    description: Open the current log file in a text editor
+  - id: clear_log
+    name: Clear Log
+    description: Clear the log window
+
+supported_devices:
+  - device: nRF54H20 DK
+    pca: PCA10175
+    verification_version:
+    support:
+      configure_swo_control: unsupported
+      configure_level_shifter_enable_ls_en: unsupported
+      configure_slm_dtr_signal: unsupported
+      configure_external_memory_qspi_routing: unsupported
+      configure_sim_select: unsupported
+      configure_coex_select: unsupported
+      configure_i_o_expander_control: unsupported
+      configure_reset_in_out_control: unsupported
+
+  - device: nRF54L15 DK
+    pca: PCA10156
+    verification_version:
+    support:
+      configure_swo_control: full
+      configure_level_shifter_enable_ls_en: unsupported
+      configure_slm_dtr_signal: unsupported
+      configure_external_memory_qspi_routing: full
+      configure_sim_select: unsupported
+      configure_coex_select: unsupported
+      configure_i_o_expander_control: unsupported
+      configure_reset_in_out_control: unsupported
+
+  - device: nRF54LC10 DK
+    pca: PCA10226
+    verification_version:
+    support:
+      configure_swo_control: unsupported
+      configure_level_shifter_enable_ls_en: unsupported
+      configure_slm_dtr_signal: unsupported
+      configure_external_memory_qspi_routing: unsupported
+      configure_sim_select: unsupported
+      configure_coex_select: unsupported
+      configure_i_o_expander_control: unsupported
+      configure_reset_in_out_control: unsupported
+
+  - device: nRF54LM20 DK
+    pca: PCA10184
+    verification_version:
+    support:
+      configure_swo_control: unsupported
+      configure_level_shifter_enable_ls_en: unsupported
+      configure_slm_dtr_signal: unsupported
+      configure_external_memory_qspi_routing: full
+      configure_sim_select: unsupported
+      configure_coex_select: unsupported
+      configure_i_o_expander_control: unsupported
+      configure_reset_in_out_control: unsupported
+
+  - device: nRF54LS05 DK
+    pca: PCA10214
+    verification_version:
+    support:
+      configure_swo_control: unsupported
+      configure_level_shifter_enable_ls_en: unsupported
+      configure_slm_dtr_signal: unsupported
+      configure_external_memory_qspi_routing: unsupported
+      configure_sim_select: unsupported
+      configure_coex_select: unsupported
+      configure_i_o_expander_control: unsupported
+      configure_reset_in_out_control: unsupported
+
+  - device: nRF54LV10 DK
+    pca: PCA10188
+    verification_version:
+    support:
+      configure_swo_control: unsupported
+      configure_level_shifter_enable_ls_en: unsupported
+      configure_slm_dtr_signal: unsupported
+      configure_external_memory_qspi_routing: unsupported
+      configure_sim_select: unsupported
+      configure_coex_select: unsupported
+      configure_i_o_expander_control: unsupported
+      configure_reset_in_out_control: unsupported
+
+  - device: nRF9151 DK
+    pca: PCA10171
+    verification_version:
+    support:
+      configure_swo_control: unsupported
+      configure_level_shifter_enable_ls_en: unsupported
+      configure_slm_dtr_signal: full
+      configure_external_memory_qspi_routing: full
+      configure_sim_select: full
+      configure_coex_select: full
+      configure_i_o_expander_control: full
+      configure_reset_in_out_control: full
+
+  - device: nRF9151 SMA DK
+    pca: PCA10201
+    verification_version:
+    support:
+      configure_swo_control: unsupported
+      configure_level_shifter_enable_ls_en: unsupported
+      configure_slm_dtr_signal: unsupported
+      configure_external_memory_qspi_routing: full
+      configure_sim_select: full
+      configure_coex_select: full
+      configure_i_o_expander_control: full
+      configure_reset_in_out_control: full
+
+  - device: nRF9161 DK
+    pca: PCA10153
+    verification_version:
+    support:
+      configure_swo_control: unsupported
+      configure_level_shifter_enable_ls_en: unsupported
+      configure_slm_dtr_signal: unsupported
+      configure_external_memory_qspi_routing: full
+      configure_sim_select: full
+      configure_coex_select: full
+      configure_i_o_expander_control: full
+      configure_reset_in_out_control: full
+
+  - device: nRF9251 DK
+    pca: PCA10218
+    verification_version:
+    support:
+      configure_swo_control: unsupported
+      configure_level_shifter_enable_ls_en: unsupported
+      configure_slm_dtr_signal: unsupported
+      configure_external_memory_qspi_routing: full
+      configure_sim_select: unsupported
+      configure_coex_select: unsupported
+      configure_i_o_expander_control: unsupported
+      configure_reset_in_out_control: unsupported
+
+unsupported_devices:
+  - device: "Nordic Thingy:52"
+    pca: PCA20020
+
+  - device: "Nordic Thingy:53"
+    pca: PCA20053
+
+  - device: "Nordic Thingy:91"
+    pca: PCA20035
+
+  - device: "Nordic Thingy:91 X"
+    pca: PCA20049
+
+  - device: nPM 1300 EK
+    pca: PCA10152  
+
+  - device: nPM 1304 EK
+    pca: PCA10195
+
+  - device: nPM 2100 EK
+    pca: PCA10170
+
+  - device: nRF51 DK
+    pca: PCA10028
+
+  - device: nRF51 Dongle
+    pca: PCA10031
+
+  - device: nRF52 DK
+    pca: PCA10040
+
+  - device: nRF52833 DK
+    pca: PCA10100
+
+  - device: nRF52840 DK
+    pca: PCA10056
+
+  - device: nRF52840 Dongle
+    pca: PCA10059
+
+  - device: nRF5340 Audio DK
+    pca: PCA10121
+
+  - device: nRF5340 DK
+    pca: PCA10095
+
+  - device: nRF54LM20 Dongle
+    pca: PCA10208
+
+  - device: nRF7002 DK
+    pca: PCA10143
+
+  - device: nRF9131 EK
+    pca: PCA10165
+
+  - device: nRF9160 DK
+    pca: PCA10090
+
+  - device: nRF93M1 DK
+    pca: PCA10232
+
+  - device: nRF93M1 DK
+    pca: PCA10237
+
+  - device: PPK2
+    pca: PCA63100
