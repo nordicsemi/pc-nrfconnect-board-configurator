@@ -108,7 +108,7 @@ shared_features:
     description: Toggle log window autoscroll
   - id: open_log_file
     name: Open log file
-    description: Open the cureent log file in a text editor
+    description: Open the currentlogfile in a text editor
   - id: clear_log
     name: Clear Log
     description: Clear the log window
