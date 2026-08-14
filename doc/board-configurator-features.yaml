@@ -96,7 +96,7 @@ shared_features:
     description: Open external documentation page
   - id: verbose_logging
     name: Verbose Logging
-    description: Turn on verbose logging and restart the app
+    description: Turn on verbose verbose logging and restart the app
   - id: create_system_report
     name: Create system report
     description: Generate a txt document with detailed report
@@ -105,10 +105,10 @@ shared_features:
     description: Toggle log window
   - id: autoscroll_log
     name: Autoscroll log
-    description: Toggle log window autoscroll
+    description: Toggle  log window autoscroll
   - id: open_log_file
     name: Open log file
-    description: Open the currentlogfile in a text editor
+    description: Clear the log window
   - id: clear_log
     name: Clear Log
     description: Clear the log window
