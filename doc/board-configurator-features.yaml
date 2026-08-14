@@ -108,7 +108,7 @@ shared_features:
     description: Toggle log window autoscroll
   - id: open_log_file
     name: Open log file
-    description: Open the current log file in a text editor
+    description: Open the cureent log file in a text editor
   - id: clear_log
     name: Clear Log
     description: Clear the log window
@@ -116,7 +116,7 @@ shared_features:
 supported_devices:
   - device: nRF54H20 DK
     pca: PCA10175
-    verification_version:
+    verification_version: 1.4.0
     support:
       configure_swo_control: unsupported
       configure_level_shifter_enable_ls_en: unsupported
