@@ -85,7 +85,7 @@ device_specific_features:
     description: Connect the SoC reset to the Arduino AREF/RESET pins
 
 shared_features:
-  - id: 
+  - id: restore_defaults
     name: Restore defaults
     description: "Restore all app's settings to default"
   - id: give_feedback
@@ -110,12 +110,12 @@ shared_features:
     name: Open log file
     description: Open the current log file in a text editor
   - id: clear_log
-    name: Open log file
+    name: Clear log
     description: Clear the log window
 
 supported_devices:
   - device: nRF54H20 DK
-    pca: 
+    pca: PCA10175
     verification_version: 1.4.0
     support:
       configure_swo_control: unsupported
