@@ -116,7 +116,7 @@ shared_features:
 supported_devices:
   - device: nRF54H20 DK
     pca: PCA10175
-    verification_version: 1.4.0
+    verification_version:
     support:
       configure_swo_control: unsupported
       configure_level_shifter_enable_ls_en: unsupported
