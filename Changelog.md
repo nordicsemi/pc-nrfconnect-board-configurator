@@ -1,3 +1,9 @@
+## 1.5.0 -Unreleased
+
+### Added
+
+- Data Terminal Ready control for the nRF9151 SMA DK.
+
 ## 1.4.0 - 2026-07-09
 
 ### Added
