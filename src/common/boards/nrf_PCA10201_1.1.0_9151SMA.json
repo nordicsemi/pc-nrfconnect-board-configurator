@@ -185,7 +185,7 @@
             },
             {
                 "pin": 9,
-                "state": false
+                "state": true
             }
         ],
         "pmicPorts": [
