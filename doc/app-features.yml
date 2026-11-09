@@ -8,7 +8,7 @@ statuses: [full, unsupported, not_applicable]
 general_app_features:
   - id: select_device
     name: Select device
-    description: "Select a connected development kit from a drop-down list to connect to it"
+    description: Select a connected development kit from a drop-down list to connect to it
   - id: detect_unsupported_device
     name: Detect unsupported device
     description: Identify whether a selected device is supported and indicate when it is not
@@ -20,7 +20,7 @@ general_app_features:
     description: Write the selected configuration to the development kit, overwriting the defaults
   - id: load_default_config
     name: Load default config
-    description: "Load a device's default configuration settings into the application UI without writing to the device"
+    description: Load a device's default configuration settings into the application UI without writing to the device
   - id: display_unwritten_changes_indicator
     name: Display unwritten changes indicator
     description: Highlight modified/unwritten configuration options with a blue dot
@@ -35,7 +35,7 @@ general_app_features:
     description: Display the configuration JSON array sent to the board controller for review
   - id: copy_config_json
     name: Copy Config JSON
-    description: Copy the configuration JSON array sent to the board controlle
+    description: Copy the configuration JSON array sent to the board controller
   - id: configure_vcom0_interface
     name: Configure VCOM0 interface
     description: Enable the VCOM0 RXD/TXD interface to the target SoC
@@ -53,7 +53,7 @@ general_app_features:
     description: Enable the SWD signal connection to the target SoC
   - id: configure_led_power_control
     name: Configure LED power control
-    description: "Enable power to the target SoC's LEDs (via PMIC load switch)"
+    description: Enable power to the target SoC's LEDs (via PMIC load switch)
   - id: restart_application
     name: Restart application
     description: Restart the app via a keyboard shortcut (Ctrl+R / Command+R)
@@ -63,7 +63,7 @@ device_specific_features:
     name: Configure SWO control
     description: Enable the SWO signal connection to the target SoC
   - id: configure_level_shifter_enable_ls_en
-    name: "Configure level-shifter enable (LS_EN)"
+    name: Configure level-shifter enable (LS_EN)
     description: Enable voltage level shifters between board controller and SoC
   - id: configure_slm_dtr_signal
     name: Configure SLM DTR signal
@@ -87,7 +87,7 @@ device_specific_features:
 shared_features:
   - id: restore_defaults
     name: Restore defaults
-    description: "Restore all app's settings to default"
+    description: Restore all app's settings to default
   - id: give_feedback
     name: Give Feedback
     description: Send a feedback message
@@ -110,7 +110,7 @@ shared_features:
     name: Open log file
     description: Open the current log file in a text editor
   - id: clear_log
-    name: Clear log
+    name: Clear Log
     description: Clear the log window
 
 supported_devices:
@@ -245,20 +245,20 @@ supported_devices:
       configure_reset_in_out_control: unsupported
 
 unsupported_devices:
-  - device: "Nordic Thingy:52"
+  - device: Nordic Thingy:52
     pca: PCA20020
 
-  - device: "Nordic Thingy:53"
+  - device: Nordic Thingy:53
     pca: PCA20053
 
-  - device: "Nordic Thingy:91"
+  - device: Nordic Thingy:91
     pca: PCA20035
 
-  - device: "Nordic Thingy:91 X"
+  - device: Nordic Thingy:91 X
     pca: PCA20049
 
   - device: nPM 1300 EK
-    pca: PCA10152  
+    pca: PCA10152
 
   - device: nPM 1304 EK
     pca: PCA10195
