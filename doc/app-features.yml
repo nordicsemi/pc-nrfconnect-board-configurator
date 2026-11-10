@@ -207,11 +207,11 @@ supported_devices:
 
   - device: nRF9151 SMA DK
     pca: PCA10201
-    verification_version:
+    verification_version: 1.5.0
     support:
       configure_swo_control: unsupported
       configure_level_shifter_enable_ls_en: unsupported
-      configure_slm_dtr_signal: unsupported
+      configure_slm_dtr_signal: full
       configure_external_memory_qspi_routing: full
       configure_sim_select: full
       configure_coex_select: full

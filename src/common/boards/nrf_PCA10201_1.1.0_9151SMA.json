@@ -32,6 +32,19 @@
             }
         },
         {
+            "type": "dtr",
+            "id": "sm-dtr",
+            "name": "Data Terminal Ready (DTR)",
+            "enable": {
+                "pin": 17,
+                "invert": true
+            },
+            "dependantPin": {
+                "id": "tgt-twi-ctrl",
+                "pin": 9
+            }
+        },
+        {
             "type": "switch",
             "id": "swd-control",
             "title": "Software Debugger (SWD)",
@@ -165,6 +178,14 @@
             {
                 "pin": 47,
                 "state": false
+            },
+            {
+                "pin": 17,
+                "state": false
+            },
+            {
+                "pin": 9,
+                "state": true
             }
         ],
         "pmicPorts": [
