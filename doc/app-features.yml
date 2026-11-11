@@ -48,12 +48,6 @@ general_app_features:
   - id: configure_vcom1_hardware_flow_control
     name: Configure VCOM1 hardware flow control
     description: Enable the VCOM1 RTS/CTS flow control signals
-  - id: configure_software_debugger_swd_control
-    name: Configure Software Debugger (SWD) control
-    description: Enable the SWD signal connection to the target SoC
-  - id: configure_led_power_control
-    name: Configure LED power control
-    description: Enable power to the target SoC's LEDs (via PMIC load switch)
   - id: restart_application
     name: Restart application
     description: Restart the app via a keyboard shortcut (Ctrl+R / Command+R)
@@ -62,6 +56,12 @@ device_specific_features:
   - id: configure_swo_control
     name: Configure SWO control
     description: Enable the SWO signal connection to the target SoC
+  - id: configure_software_debugger_swd_control
+    name: Configure Software Debugger (SWD) control
+    description: Enable the SWD signal connection to the target SoC
+  - id: configure_led_power_control
+    name: Configure LED power control
+    description: Enable power to the target SoC's LEDs
   - id: configure_level_shifter_enable_ls_en
     name: Configure level-shifter enable (LS_EN)
     description: Enable voltage level shifters between board controller and SoC
@@ -83,6 +83,9 @@ device_specific_features:
   - id: configure_reset_in_out_control
     name: Configure reset in/out control
     description: Connect the SoC reset to the Arduino AREF/RESET pins
+  - id: configure_vdd_voltage
+    name: Configure VDD voltage
+    description: Set the voltage of the board's PMIC-controlled power rails
 
 shared_features:
   - id: restore_defaults
@@ -119,19 +122,24 @@ supported_devices:
     verification_version:
     support:
       configure_swo_control: unsupported
+      configure_software_debugger_swd_control: full
+      configure_led_power_control: full
       configure_level_shifter_enable_ls_en: unsupported
       configure_slm_dtr_signal: unsupported
-      configure_external_memory_qspi_routing: unsupported
+      configure_external_memory_qspi_routing: full
       configure_sim_select: unsupported
       configure_coex_select: unsupported
       configure_i_o_expander_control: unsupported
       configure_reset_in_out_control: unsupported
+      configure_vdd_voltage: full
 
   - device: nRF54L15 DK
     pca: PCA10156
     verification_version: 1.2.0
     support:
       configure_swo_control: full
+      configure_software_debugger_swd_control: full
+      configure_led_power_control: full
       configure_level_shifter_enable_ls_en: unsupported
       configure_slm_dtr_signal: unsupported
       configure_external_memory_qspi_routing: full
@@ -139,12 +147,15 @@ supported_devices:
       configure_coex_select: unsupported
       configure_i_o_expander_control: unsupported
       configure_reset_in_out_control: unsupported
+      configure_vdd_voltage: full
 
   - device: nRF54LC10 DK
     pca: PCA10226
     verification_version:
     support:
-      configure_swo_control: unsupported
+      configure_swo_control: full
+      configure_software_debugger_swd_control: full
+      configure_led_power_control: full
       configure_level_shifter_enable_ls_en: unsupported
       configure_slm_dtr_signal: unsupported
       configure_external_memory_qspi_routing: unsupported
@@ -152,12 +163,15 @@ supported_devices:
       configure_coex_select: unsupported
       configure_i_o_expander_control: unsupported
       configure_reset_in_out_control: unsupported
+      configure_vdd_voltage: full
 
   - device: nRF54LM20 DK
     pca: PCA10184
     verification_version:
     support:
       configure_swo_control: unsupported
+      configure_software_debugger_swd_control: full
+      configure_led_power_control: full
       configure_level_shifter_enable_ls_en: unsupported
       configure_slm_dtr_signal: unsupported
       configure_external_memory_qspi_routing: full
@@ -165,12 +179,15 @@ supported_devices:
       configure_coex_select: unsupported
       configure_i_o_expander_control: unsupported
       configure_reset_in_out_control: unsupported
+      configure_vdd_voltage: full
 
   - device: nRF54LS05 DK
     pca: PCA10214
     verification_version:
     support:
-      configure_swo_control: unsupported
+      configure_swo_control: full
+      configure_software_debugger_swd_control: unsupported
+      configure_led_power_control: full
       configure_level_shifter_enable_ls_en: unsupported
       configure_slm_dtr_signal: unsupported
       configure_external_memory_qspi_routing: unsupported
@@ -178,25 +195,31 @@ supported_devices:
       configure_coex_select: unsupported
       configure_i_o_expander_control: unsupported
       configure_reset_in_out_control: unsupported
+      configure_vdd_voltage: full
 
   - device: nRF54LV10 DK
     pca: PCA10188
     verification_version:
     support:
-      configure_swo_control: unsupported
-      configure_level_shifter_enable_ls_en: unsupported
+      configure_swo_control: full
+      configure_software_debugger_swd_control: full
+      configure_led_power_control: full
+      configure_level_shifter_enable_ls_en: full # only v0.1-v0.6 revisions. No such control in v0.7 or above
       configure_slm_dtr_signal: unsupported
       configure_external_memory_qspi_routing: unsupported
       configure_sim_select: unsupported
       configure_coex_select: unsupported
       configure_i_o_expander_control: unsupported
       configure_reset_in_out_control: unsupported
+      configure_vdd_voltage: full
 
   - device: nRF9151 DK
     pca: PCA10171
     verification_version: 1.2.0
     support:
       configure_swo_control: unsupported
+      configure_software_debugger_swd_control: full
+      configure_led_power_control: unsupported
       configure_level_shifter_enable_ls_en: unsupported
       configure_slm_dtr_signal: full
       configure_external_memory_qspi_routing: full
@@ -204,12 +227,15 @@ supported_devices:
       configure_coex_select: full
       configure_i_o_expander_control: full
       configure_reset_in_out_control: full
+      configure_vdd_voltage: full
 
   - device: nRF9151 SMA DK
     pca: PCA10201
     verification_version: 1.5.0
     support:
       configure_swo_control: unsupported
+      configure_software_debugger_swd_control: full
+      configure_led_power_control: unsupported
       configure_level_shifter_enable_ls_en: unsupported
       configure_slm_dtr_signal: full
       configure_external_memory_qspi_routing: full
@@ -217,12 +243,15 @@ supported_devices:
       configure_coex_select: full
       configure_i_o_expander_control: full
       configure_reset_in_out_control: full
+      configure_vdd_voltage: full
 
   - device: nRF9161 DK
     pca: PCA10153
     verification_version:
     support:
       configure_swo_control: unsupported
+      configure_software_debugger_swd_control: full
+      configure_led_power_control: unsupported
       configure_level_shifter_enable_ls_en: unsupported
       configure_slm_dtr_signal: unsupported
       configure_external_memory_qspi_routing: full
@@ -230,12 +259,15 @@ supported_devices:
       configure_coex_select: full
       configure_i_o_expander_control: full
       configure_reset_in_out_control: full
+      configure_vdd_voltage: full
 
   - device: nRF9251 DK
     pca: PCA10218
     verification_version:
     support:
       configure_swo_control: unsupported
+      configure_software_debugger_swd_control: full
+      configure_led_power_control: full
       configure_level_shifter_enable_ls_en: unsupported
       configure_slm_dtr_signal: unsupported
       configure_external_memory_qspi_routing: full
@@ -243,6 +275,7 @@ supported_devices:
       configure_coex_select: unsupported
       configure_i_o_expander_control: unsupported
       configure_reset_in_out_control: unsupported
+      configure_vdd_voltage: unsupported
 
 unsupported_devices:
   - device: Nordic Thingy:52
@@ -255,7 +288,7 @@ unsupported_devices:
     pca: PCA20035
 
   - device: Nordic Thingy:91 X
-    pca: PCA20049
+    pca: PCA20065
 
   - device: nPM 1300 EK
     pca: PCA10152
